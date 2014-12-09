@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20141207224015) do
     t.string   "image_url"
     t.string   "name"
     t.string   "email"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

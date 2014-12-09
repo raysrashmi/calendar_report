@@ -5,6 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image_url
       t.string :name
       t.string :email
+      t.string :oauth_token
+      t.datetime :oauth_expires_at
 
       t.timestamps
     end

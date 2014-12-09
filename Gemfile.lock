@@ -27,6 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -43,8 +44,12 @@ GEM
       dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.2)
+    extlib (0.9.16)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    google_calendar (0.4.4)
+      json (~> 1.8)
+      signet (~> 0.5)
     hashie (3.3.2)
     hike (1.2.3)
     i18n (0.6.11)
@@ -110,6 +115,12 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    signet (0.6.0)
+      addressable (~> 2.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      jwt (~> 1.0)
+      multi_json (~> 1.10)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -138,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  google_calendar
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-google-oauth2
