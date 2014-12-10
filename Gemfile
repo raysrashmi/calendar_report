@@ -13,5 +13,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem "omniauth-google-oauth2"
 gem "dotenv-rails"
-gem "google_calendar"
-
+gem 'google-api-client', require: 'google/api_client'
