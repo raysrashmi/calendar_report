@@ -6,8 +6,11 @@ class HomeController < ApplicationController
       service = client.discovered_api('calendar', 'v3')
       @result = client.execute(
         api_method: service.events.list,
-        parameters: {'calendarId' => 'primary'},
+        parameters: {'calendarId' => 'primary',
+                     'timeMin' => Time.now.to_datetime.rfc3339,
+                     'timeMax' => (Time.now + 7.days).to_datetime.rfc3339},
         headers: {'Content-Type' => 'application/json'})
+       @result = @result.data
 
     end
   end

@@ -14,3 +14,4 @@ gem 'spring',        group: :development
 gem "omniauth-google-oauth2"
 gem "dotenv-rails"
 gem 'google-api-client', require: 'google/api_client'
+gem 'whenever'
