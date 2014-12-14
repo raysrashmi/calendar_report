@@ -13,7 +13,7 @@ class Event
   end
 
   def summary
-    data[:summary]
+    data["summary"]
   end
 
   def description
