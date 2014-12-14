@@ -14,3 +14,4 @@ gem "omniauth-google-oauth2"
 gem "dotenv-rails"
 gem 'google-api-client', require: 'google/api_client'
 gem 'whenever'
+gem 'rails_12factor', group: :production
