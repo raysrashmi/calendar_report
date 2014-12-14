@@ -1,7 +1,9 @@
 class FetchEvent
   def self.all
     User.all.each do |user|
-      CalendarMailr.UserEvent.new(user).run
+      CalendarMailer.
+        weekly_events(user, UserEvent.new(user).run).
+        deliver
     end
   end
 end
@@ -23,5 +25,6 @@ class UserEvent
                    'timeMin' => Time.now.to_datetime.rfc3339,
                    'timeMax' => (Time.now + 7.days).to_datetime.rfc3339},
        headers: {'Content-Type' => 'application/json'})
+    @result.data.items
   end
 end

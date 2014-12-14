@@ -1,20 +1,26 @@
 <% unless current_user %>
-  <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+    <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 <% else %>
     <% @result.items.each do|event| %>
-        <% event_data = JSON.parse(event.to_json) %>
-        <% event_data.keys.each do |key| %>
-            <%= event_data[key]%>
-            <br/>
-        <% end %>
-        ==========================
-        <br/>
-        <%= JSON.parse(event.to_json)["start"]["dateTime"]%>
-        <br/>
-        <%= JSON.parse(event.to_json)["end"]["dateTime"]%>
-        <%= JSON.parse(event.to_json)["summary"] %>
-        <br/>
-        <%= JSON.parse(event.to_json)["description"] %>
+        <% e = Event.new(event) %>
+        <div>
+            <span>On</span>
+            <span><%= e.event_day %></span>
+            <span>at</span>
+            <span><%= e.event_time %></span>
+        </div>
+        <div>
+            <span>Summary</span>
+            <span><%= e.event_summary %></span>
+        </div>
+        <div>
+            <span>Description</span>
+            <span><%= e.description %></span>
+        </div>
+        <div>
+            <span>Details</span>
+            <span><%= link_to e.url, e.url %></span>
+        </div>
         <hr/>
     <% end %>
 <% end %>
