@@ -5,11 +5,11 @@ class Event
   end
 
   def event_date
-    (data["start"]["dateTime"]).to_time
+    (data["start"] && data["start"]["dateTime"]).try(:to_time)
   end
 
   def event_day
-    Date::DAYNAMES[event_date.wday]
+    Date::DAYNAMES[event_date.wday] if event_date
   end
 
   def summary
@@ -25,6 +25,10 @@ class Event
   end
 
   def event_time
-    [event_date.hour, event_date.min].join(":")
+    event_date.strftime("%I:%M %p") if event_date
+  end
+
+  def organizer
+    data["organizer"] &&  data["organizer"]["displayName"]
   end
 end

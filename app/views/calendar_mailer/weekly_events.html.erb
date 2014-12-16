@@ -1,23 +1,28 @@
 <%= @user.email %> here is schedule for next week
-<% @events.each do|event| %>
-    <% e = Event.new(event) %>
-    <div>
-        <span>On</span>
-        <span><%= e.event_day %></span>
-        <span>at</span>
-        <span><%= e.event_time %></span>
-    </div>
-    <div>
-        <span>Summary</span>
-        <span><%= e.summary %></span>
-    </div>
-    <div>
-        <span>Description</span>
-        <span><%= e.description %></span>
-    </div>
-    <div>
-        <span>Details</span>
-        <span><%= link_to e.url, e.url %></span>
-    </div>
+<% @events.each do|key, value| %>
+    <h1><%= key %></h1>
+    <% value.each do |event| %>
+        <div>
+            <span>At</span>
+            <span><%= event.event_time %></span>
+        </div>
+        <div>
+            <span>Summary</span>
+            <span><%= event.summary %></span>
+        </div>
+        <div>
+            <span>Description</span>
+            <span><%= event.description %></span>
+        </div>
+        <div>
+            <span>Details</span>
+            <span><%= link_to event.url, event.url %></span>
+        </div>
+        <div>
+            <span>Organized by</span>
+            <span><%= event.organizer %></span>
+        </div>
+        <br/>
+    <% end %>
     <hr/>
 <% end %>
