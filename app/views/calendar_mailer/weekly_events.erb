@@ -1,4 +1,5 @@
 <%= @user.email %> here is schedule for next week
+<%= @events.count%>
 <% @events.each do|key, value| %>
     <div class="events">
         <h1><%= key %></h1>
