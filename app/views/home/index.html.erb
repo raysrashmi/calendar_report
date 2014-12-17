@@ -2,30 +2,23 @@
     <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 <% else %>
     <% @events.each do|key, value| %>
-        <h1><%= key %></h1>
-        <% value.each do |event| %>
-            <div>
-                <span>At</span>
-                <span><%= event.event_time %></span>
-            </div>
-            <div>
-                <span>Summary</span>
-                <span><%= event.summary %></span>
-            </div>
-            <div>
-                <span>Description</span>
-                <span><%= event.description %></span>
-            </div>
-            <div>
-                <span>Details</span>
-                <span><%= link_to event.url, event.url %></span>
-            </div>
-            <div>
-                <span>Organized by</span>
-                <span><%= event.organizer %></span>
-            </div>
-            <br/>
-        <% end %>
-        <hr/>
+        <div class="events">
+            <h1><%= key %></h1>
+            <% value.each do |event| %>
+                <div class='event'>
+                    <div>
+                        <span><%= event.start_time %></span>
+                        -
+                        <span><%= event.end_time %></span>
+                    </div>
+                    <div>
+                        <span><%= event.summary %></span>
+                    </div>
+                    <div>
+                        <span><%= link_to "More details", event.url %></span>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     <% end %>
 <% end %>

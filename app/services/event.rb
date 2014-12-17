@@ -4,12 +4,16 @@ class Event
     @data = JSON.parse(data.to_json)
   end
 
-  def event_date
+  def start_date
     (data["start"] && data["start"]["dateTime"]).try(:to_time)
   end
 
+  def end_date
+    (data["end"] && data["end"]["dateTime"]).try(:to_time)
+  end
+
   def event_day
-    Date::DAYNAMES[event_date.wday] if event_date
+    Date::DAYNAMES[start_date.wday] if start_date
   end
 
   def summary
@@ -24,8 +28,12 @@ class Event
     data["htmlLink"]
   end
 
-  def event_time
-    event_date.strftime("%I:%M %p") if event_date
+  def start_time
+    start_date.strftime("%I:%M %p") if start_date
+  end
+
+  def end_time
+    end_date.strftime("%I:%M %p") if end_date
   end
 
   def organizer
