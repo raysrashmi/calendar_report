@@ -9,8 +9,9 @@
   <body>
     <div style="float:right;">
       <% if current_user %>
-        <%= current_user.name %>
-        <%= link_to "Sign out", signout_path, method: :delete %>
+          <%= current_user.name %> |
+          <%= link_to "Sign out", signout_path, method: :delete %> |
+        <%= link_to "Unsubscribe", unsubscribe_path(current_user), method: :delete %>
       <% end %>
     </div>
 

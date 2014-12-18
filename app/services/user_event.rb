@@ -8,7 +8,6 @@ class UserEvent
   def run
     items = result_data.map{|item| Event.new(item)}
     items = items.group_by{|event| event.event_day}
-    Rails.logger.info"================#{items}======="
     items
   end
 
