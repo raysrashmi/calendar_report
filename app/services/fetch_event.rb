@@ -1,6 +1,6 @@
 class FetchEvent
   def self.all
-    if Date.today.wday == 0 #send email only on sunday
+    if Date.today.wday == 1 #send email only on monday 00:00
       User.all.each do |user|
         events = UserEvent.new(user).run
         if events.count > 0
