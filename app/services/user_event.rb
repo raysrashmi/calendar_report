@@ -14,6 +14,10 @@ class UserEvent
   def result_data
     client = Google::APIClient.new
     client.authorization.access_token = user.oauth_token
+    if client.authorization.refresh_token && client.authorization.expired?
+      Rails.logger.info "client.authorization.fetch_access_token!"
+      client.authorization.fetch_access_token!
+    end
     service = client.discovered_api('calendar', 'v3')
     result = client.execute(
       api_method: service.events.list,
